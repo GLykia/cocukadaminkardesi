@@ -68,8 +68,8 @@ namespace SOS_Training_For_OOP
                             if (masa[satir, sutun] == '-')
                             {
                                 masa[satir, sutun] = secim1;
-                                sira = 2;
                                 OyunSonuKontrol();
+                                sira = 2;
                             }
                         }
                         else if (sira == 2)
@@ -78,8 +78,8 @@ namespace SOS_Training_For_OOP
                             if (masa[satir, sutun] == '-')
                             {
                                 masa[satir, sutun] = secim2;
-                                sira = 1;
                                 OyunSonuKontrol();
+                                sira = 1;
                             }
                         }
                         EkraniGuncelle();
@@ -123,7 +123,14 @@ namespace SOS_Training_For_OOP
             }
             else if ((masa[0, 0] == masa[0, 1] && masa[0, 0] == masa[0, 2]) || (masa[0, 0] == masa[1, 0] && masa[0, 0] == masa[2, 0]) || (masa[0, 1] == masa[1, 1] && masa[0, 1] == masa[2, 1]) || (masa[0,2] == masa[1,2] && masa[0, 2] == masa[2, 2]))
             {
-                Console.WriteLine("bitti lo");
+                if (sira==1)
+                {
+                    Console.WriteLine("{0}. Oyuncu kazandı", ad1);
+                }
+                else
+                {
+                    Console.WriteLine("{0}. Oyuncu kazandı", ad2);
+                }
             }
             else
             {
