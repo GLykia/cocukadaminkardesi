@@ -11,8 +11,6 @@ namespace SOS_Training_For_OOP
     {
         static void Main(string[] args)
         {
-            Oyuncu o1 = new Oyuncu();
-            Oyuncu o2 = new Oyuncu();
             Game g = new Game();
             g.Oyna();
         }

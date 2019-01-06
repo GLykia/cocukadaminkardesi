@@ -8,11 +8,11 @@ namespace SOS_Training_For_OOP
 {
     class Game:Oyuncu
     {
-        public int satir;
-        public int sutun;
+        public byte satir;
+        public byte sutun;
         public static bool bitmedimi=true;
         public static bool kontrol = true;
-        public static int kaldı = 0;
+        public static int kaldi = 0;
         //public char[,] masa =
         //{
         //    {'-','-','-'},
@@ -55,19 +55,19 @@ namespace SOS_Training_For_OOP
                     else
                         Console.WriteLine("{0} adlı oyuncunun sırası", ad2);
 
-
                     try
                     {
                         Console.WriteLine("Satir Giriniz");
-                        satir = int.Parse(Console.ReadLine());
+                        satir = Convert.ToByte(Console.ReadKey().KeyChar.ToString());
+                        Console.WriteLine();
                         Console.WriteLine("Sütun Giriniz");
-                        sutun = int.Parse(Console.ReadLine());
+                        sutun = Convert.ToByte(Console.ReadKey().KeyChar.ToString());
                         Console.Clear();
                         if (sira == 1)
                         {
                             if (masa[satir, sutun] == '-')
                             {
-                                masa[satir, sutun] = 'X';
+                                masa[satir, sutun] = secim1;
                                 sira = 2;
                                 OyunSonuKontrol();
                             }
@@ -77,14 +77,13 @@ namespace SOS_Training_For_OOP
 
                             if (masa[satir, sutun] == '-')
                             {
-                                masa[satir, sutun] = '0';
+                                masa[satir, sutun] = secim2;
                                 sira = 1;
                                 OyunSonuKontrol();
                             }
                         }
                         EkraniGuncelle();
                     }
-
                     catch (IndexOutOfRangeException)
                     {
                         Console.Clear();
@@ -103,27 +102,32 @@ namespace SOS_Training_For_OOP
         }
         public bool OyunSonuKontrol()
         {
-            if (kaldı == 8)
+            if (kaldi == 8)
             {
                 Console.WriteLine("Berabere Kaldınız");
                 Console.WriteLine("Tekrar Oynamak istiyonmu");
                 ConsoleKeyInfo cki = Console.ReadKey();
-                if (cki.Key==ConsoleKey.E)
+                if (cki.Key == ConsoleKey.E)
                 {
                     bitmedimi = true;
-                    kaldı = 0;
+                    kaldi = 0;
                     masaac();
                 }
+
                 else
                 {
                     bitmedimi = false;
                     kontrol = false;
                 }
-                
+
+            }
+            else if ((masa[0, 0] == masa[0, 1] && masa[0, 0] == masa[0, 2]) || (masa[0, 0] == masa[1, 0] && masa[0, 0] == masa[2, 0]) || (masa[0, 1] == masa[1, 1] && masa[0, 1] == masa[2, 1]) || (masa[0,2] == masa[1,2] && masa[0, 2] == masa[2, 2]))
+            {
+                Console.WriteLine("bitti lo");
             }
             else
             {
-                kaldı++;
+                kaldi++;
             }
             return bitmedimi;
         }
